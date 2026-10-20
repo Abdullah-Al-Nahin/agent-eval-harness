@@ -1,0 +1,2 @@
+﻿# Core harness runs on the Python 3.10+ standard library.
+pytest>=8.0.0

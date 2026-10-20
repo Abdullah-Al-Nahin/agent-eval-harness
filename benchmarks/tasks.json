@@ -1,0 +1,26 @@
+﻿[
+  {
+    "task_id": "py_algo_001",
+    "language": "python",
+    "prompt": "Write a function `fibonacci(n: int) -> int` that returns the n-th Fibonacci number in O(n) time.",
+    "candidate_solution": "def fibonacci(n: int) -> int:\n    if n <= 1:\n        return n\n    a, b = 0, 1\n    for _ in range(2, n + 1):\n        a, b = b, a + b\n    return b\n",
+    "unit_test": "assert fibonacci(0) == 0\nassert fibonacci(1) == 1\nassert fibonacci(10) == 55\nassert fibonacci(20) == 6765\nprint('ALL_TESTS_PASSED')",
+    "timeout_sec": 5
+  },
+  {
+    "task_id": "py_algo_002",
+    "language": "python",
+    "prompt": "Write a function `is_valid_brackets(s: str) -> bool` that validates balanced parentheses (), {}, and [].",
+    "candidate_solution": "def is_valid_brackets(s: str) -> bool:\n    stack = []\n    mapping = {')': '(', '}': '{', ']': '['}\n    for char in s:\n        if char in mapping:\n            top = stack.pop() if stack else '#'\n            if mapping[char] != top:\n                return False\n        elif char in mapping.values():\n            stack.append(char)\n    return not stack\n",
+    "unit_test": "assert is_valid_brackets('()[]{}') is True\nassert is_valid_brackets('([)]') is False\nassert is_valid_brackets('{[]}') is True\nprint('ALL_TESTS_PASSED')",
+    "timeout_sec": 5
+  },
+  {
+    "task_id": "py_algo_003",
+    "language": "python",
+    "prompt": "Write a function `two_sum(nums: list[int], target: int) -> tuple[int, int]` returning indices of two numbers that add up to target.",
+    "candidate_solution": "def two_sum(nums, target):\n    seen = {}\n    for i, num in enumerate(nums):\n        diff = target - num\n        if diff in seen:\n            return (seen[diff], i)\n        seen[num] = i\n    return (-1, -1)\n",
+    "unit_test": "assert two_sum([2, 7, 11, 15], 9) == (0, 1)\nassert two_sum([3, 2, 4], 6) == (1, 2)\nprint('ALL_TESTS_PASSED')",
+    "timeout_sec": 5
+  }
+]
